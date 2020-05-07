@@ -41,17 +41,22 @@ const makePlanet = function () {
 };
 //make points
 const makeStars = function () {
+  const texture = loader.load("assets/particle.png");
   const geometry = new THREE.Geometry();
 
   for (let i = 0; i < 5000; i = i + 1) {
     const point = new THREE.Vector3();
-    const sphericalPoint = new THREE.Spherical(900 + Math.random() * 200, 2 * Math.PI * Math.random(), Math.PI * Math.random());
+    const sphericalPoint = new THREE.Spherical(900 + Math.random() * 800, 2 * Math.PI * Math.random(), Math.PI * Math.random());
     point.setFromSpherical(sphericalPoint);
     geometry.vertices.push(point);
   }
   const material = new THREE.PointsMaterial({
-    color: 0xffffff,
+    transparent: true,
     size: 50,
+    map: texture,
+    blending: THREE.AdditiveBlending,
+    depthTest: true,
+    depthWrite: false,
   });
 
   const points = new THREE.Points(geometry, material);
