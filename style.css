@@ -1,0 +1,17 @@
+* {
+  margin: 0;
+
+  height: 4000px;
+}
+
+html,
+body {
+  /* position: fixed; */
+}
+
+section {
+  position: fixed;
+}
+canvas {
+  vertical-align: bottom;
+}
